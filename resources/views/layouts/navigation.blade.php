@@ -3,38 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    <script>
-        function menuHandler() {
-            return { open: false };
-        }
-    </script>
     <title>Navbar</title>
+    <style>
+        body {
+            background-color: #F8FAFC;
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            background-color: #F8FAFC;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .menu {
+            display: flex;
+            gap: 20px;
+        }
+        .menu a, .logout-btn {
+            text-decoration: none;
+            color: #9AA6B2;
+            padding: 8px 12px;
+            border-radius: 5px;
+        }
+        .menu a:hover, .logout-btn:hover {
+            background-color: #D9EAFD;
+        }
+        .logout-btn {
+            background-color: #D9EAFD;
+            border: none;
+            cursor: pointer;
+        }
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            padding-top: 10px;
+        }
+        .mobile-menu a, .mobile-menu button {
+            text-align: left;
+            width: 100%;
+        }
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .mobile-menu {
+                display: none;
+                background-color: #F8FAFC;
+                padding: 10px;
+                border-top: 1px solid #ccc;
+            }
+            .mobile-menu.show {
+                display: flex;
+            }
+        }
+    </style>
 </head>
-<body class="bg-[#F8FAFC]">
-<nav class="bg-[#D9EAFD] shadow-md"> 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-            <div class="flex items-center">
-                <a href="#" class="text-[#9AA6B2] font-bold text-lg">MyApp</a>
-                <div class="hidden md:flex space-x-8 ml-10">
-                    <a href="#" class="text-[#9AA6B2] hover:text-[#F8FAFC]">Dashboard</a>
-                    <a href="#" class="text-[#9AA6B2] hover:text-[#F8FAFC]">Profile</a>
-                </div>
-            </div>
-            <div class="hidden md:flex items-center">
-                <button class="px-4 py-2 bg-[#BCCCDE] text-[#9AA6B2] rounded-md hover:bg-[#9AA6B2] hover:text-white">Logout</button>
-            </div>
-            <div class="md:hidden flex items-center">
-                <button class="text-[#9AA6B2]" id="mobile-menu-button">
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                    </svg>
-                </button>
-            </div>
+<body>
+
+<nav class="navbar">
+    <div class="container">
+        <a href="#" class="logo" style="font-weight: bold; font-size: 1.2rem; color: #9AA6B2;">MyApp</a>
+        
+        <!-- Desktop Menu -->
+        <div class="menu">
+            <a href="#">Dashboard</a>
+            <a href="#">Profile</a>
+            <button class="logout-btn">Logout</button>
         </div>
+
+        <!-- Mobile Menu Button -->
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#">Dashboard</a>
+        <a href="#">Profile</a>
+        <button class="logout-btn">Logout</button>
     </div>
 </nav>
+
+<script>
+    function toggleMenu() {
+        document.getElementById('mobileMenu').classList.toggle('show');
+    }
+</script>
 
 </body>
 </html>
