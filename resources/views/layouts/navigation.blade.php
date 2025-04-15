@@ -27,7 +27,7 @@
         }
         .menu a, .logout-btn {
             text-decoration: none;
-            color: #9AA6B2;
+            color:rgb(113, 149, 183);
             padding: 8px 12px;
             border-radius: 5px;
         }
@@ -66,7 +66,7 @@
             }
             .mobile-menu {
                 display: none;
-                background-color: #F8FAFC;
+                background-color:rgb(90, 133, 176);
                 padding: 10px;
                 border-top: 1px solid #ccc;
             }
@@ -80,7 +80,7 @@
 
 <nav class="navbar">
     <div class="container">
-        <a href="#" class="logo" style="font-weight: bold; font-size: 1.2rem; color: #9AA6B2;">MyApp</a>
+        <a href="#" class="logo" style="font-weight: bold; font-size: 1.2rem; color:rgb(96, 139, 183);">MyApp</a>
         
         <!-- Desktop Menu -->
         <div class="menu">

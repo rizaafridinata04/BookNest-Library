@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\adminController;
+use App\Http\Controllers\WelcomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // ====HALAMAN USER===
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
@@ -32,10 +34,22 @@ Route::middleware('auth')->group(function () {
 
 
 // ====HALAMAN ADMIN====
-use App\Http\Controllers\AdminController;
 
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('adminDashboard');
+    Route::get('/admin/dashboard', [adminController::class, 'index'])->name('adminDashboard');
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/admin', function () {
+    return view('admin.adminDashboard');
+});
+
+Route::get('/admin/users', function () {
+    $users = User::all();
+    return view('users', compact('users'));
+});
+
+
+
+Route::get('/', [WelcomeController::class, 'index']);
